@@ -1,8 +1,11 @@
 import { Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addToFavouriteCompaniesAction } from "../redux/actions";
+import { useState } from "react";
 
 const Job = ({ data }) => {
+  const [isClicked, setIsClicked] = useState(false);
   const dispacth = useDispatch();
 
   return (
@@ -14,16 +17,14 @@ const Job = ({ data }) => {
         <Link to={`/${data.company_name}`}>{data.company_name}</Link>
 
         <i
-          className="bi bi-heart ms-3"
+          className={isClicked ? "bi bi-heart-fill ms-3" : "bi bi-heart ms-3"}
           onClick={() => {
-            dispacth({
-              type: "ADD_TO_FAVOURITE_COMPANIES",
-              payload: data.company_name,
-            });
+            dispacth(addToFavouriteCompaniesAction(data.company_name));
+            setIsClicked(!isClicked);
           }}
         ></i>
         {/* <Link to={"/favouritesCompany"}>
-        <i className="bi bi-heart-fill"></i>
+        <i className="bi bi-heart-fill ms-3"></i>
       </Link> */}
       </Col>
       <Col xs={9} style={{ textAlign: "center" }}>

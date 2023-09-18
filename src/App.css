@@ -54,3 +54,12 @@ i:hover {
   color: red;
   font-weight: 800;
 }
+
+i.bi.bi-heart-fill {
+  color: red;
+}
+
+i.bi.bi-heart-fill:hover {
+  color: black;
+  font-weight: 800;
+}

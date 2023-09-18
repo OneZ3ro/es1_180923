@@ -2,6 +2,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import BtnHome from "./BtnHome";
 import { Link } from "react-router-dom";
+import { removeFavouriteCompanyAction } from "../redux/actions";
 
 const Favourites = () => {
   const favouritesCompanies = useSelector(
@@ -31,9 +32,7 @@ const Favourites = () => {
           <Button
             variant="danger"
             style={{ width: "fit-content" }}
-            onClick={() =>
-              dispatch({ type: "REMOVE_FAVORITE_COMPANY", payload: index })
-            }
+            onClick={() => dispatch(removeFavouriteCompanyAction(index))}
           >
             Remove
           </Button>
